@@ -1,0 +1,179 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+
+.board{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3,auto);
+    z-index: 2;
+}
+
+.cell{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3){
+    border-top: none;
+}
+
+
+.cell:nth-child(3n+1){
+    border-left:none ;
+}
+
+.cell:nth-child(3n+3){
+    border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7){
+    border-bottom: none;
+}
+
+
+
+.cell.x::before,
+.cell.x::after
+{
+    content: '';
+    width: 9px;
+    height: 90px;
+    background-color: black;
+    position: absolute;
+    cursor: not-allowed;
+}
+
+.cell.x::after{
+    transform: rotate(45deg);
+}
+
+.cell.x::before{
+    transform: rotate(-45deg);
+}
+
+
+.cell.circle::after,
+.cell.circle::before{
+    content: '';
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    border-radius: 50%;
+    background: black ;
+}
+
+.cell.circle::after{
+    height: 60px;
+    width: 60px;
+    background: white;
+}
+
+.cell.x,
+.cell.circle{
+    cursor: not-allowed;
+}
+
+
+/*hovers*/
+
+
+.board.x .cell:not(.x):not(.circle):hover:after,
+.board.x .cell:not(.x):not(.circle):hover:before{
+    content: '';
+    width: 9px;
+    height: 90px;
+    background-color: rgb(184, 183, 183);
+    position: absolute;
+    
+}
+
+
+.board.x .cell:not(.x):not(.circle):hover:after{
+    transform: rotate(45deg);
+}
+
+.board.x .cell:not(.x):not(.circle):hover:before{
+    transform: rotate(-45deg);
+}
+
+
+.board.circle .cell:not(.x):not(.circle):hover:after,
+.board.circle .cell:not(.x):not(.circle):hover:before{
+    content: '';
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    border-radius: 50%;
+    background: rgb(184, 183, 183) ;
+}
+.board.circle .cell:not(.x):not(.circle):hover:after{
+    height: 60px;
+    width: 60px;
+    background: white;
+}
+
+
+/*winning screeen*/
+
+
+.winmas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+
+
+.text{
+    text-align: center;
+    font-size: 33px;
+    color: white;
+}
+
+.restart{
+    width: 90px;
+    height: 35px;
+    border: none;
+    font-size: large;
+    cursor: pointer;
+}
+
+
+.restart:hover{
+    color: white;
+    background-color: black;
+}
+
+.active{
+    display: flex;
+}
+
